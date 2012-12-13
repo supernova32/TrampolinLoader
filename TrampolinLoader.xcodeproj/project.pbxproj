@@ -11,6 +11,16 @@
 		44207A391679FBA400AA3DCE /* TrampolinLoader.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 44207A381679FBA400AA3DCE /* TrampolinLoader.1 */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		44207A761679FC4800AA3DCE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 44207A721679FC4800AA3DCE /* DynamicLibraries.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 44207A6B1679FC4800AA3DCE;
+			remoteInfo = DynamicLibraries;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		44207A301679FBA400AA3DCE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -28,6 +38,7 @@
 		44207A321679FBA400AA3DCE /* TrampolinLoader */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TrampolinLoader; sourceTree = BUILT_PRODUCTS_DIR; };
 		44207A361679FBA400AA3DCE /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		44207A381679FBA400AA3DCE /* TrampolinLoader.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = TrampolinLoader.1; sourceTree = "<group>"; };
+		44207A721679FC4800AA3DCE /* DynamicLibraries.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DynamicLibraries.xcodeproj; path = DynamicLibraries/DynamicLibraries.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +55,7 @@
 		44207A271679FBA400AA3DCE = {
 			isa = PBXGroup;
 			children = (
+				44207A721679FC4800AA3DCE /* DynamicLibraries.xcodeproj */,
 				44207A351679FBA400AA3DCE /* TrampolinLoader */,
 				44207A331679FBA400AA3DCE /* Products */,
 			);
@@ -64,6 +76,14 @@
 				44207A381679FBA400AA3DCE /* TrampolinLoader.1 */,
 			);
 			path = TrampolinLoader;
+			sourceTree = "<group>";
+		};
+		44207A731679FC4800AA3DCE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				44207A771679FC4800AA3DCE /* libDynamicLibraries.dylib */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,12 +125,28 @@
 			mainGroup = 44207A271679FBA400AA3DCE;
 			productRefGroup = 44207A331679FBA400AA3DCE /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 44207A731679FC4800AA3DCE /* Products */;
+					ProjectRef = 44207A721679FC4800AA3DCE /* DynamicLibraries.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				44207A311679FBA400AA3DCE /* TrampolinLoader */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		44207A771679FC4800AA3DCE /* libDynamicLibraries.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libDynamicLibraries.dylib;
+			remoteRef = 44207A761679FC4800AA3DCE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		44207A2E1679FBA400AA3DCE /* Sources */ = {
