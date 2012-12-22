@@ -12,12 +12,33 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		44207A761679FC4800AA3DCE /* PBXContainerItemProxy */ = {
+		44E647161686238400528084 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 44207A721679FC4800AA3DCE /* DynamicLibraries.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 44207A6B1679FC4800AA3DCE;
-			remoteInfo = DynamicLibraries;
+			remoteGlobalIDString = 44207AB5167A0A0900AA3DCE;
+			remoteInfo = Interface;
+		};
+		44E647181686238400528084 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 44207A721679FC4800AA3DCE /* DynamicLibraries.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 44207A9D167A099100AA3DCE;
+			remoteInfo = Dispatcher;
+		};
+		44E6471A1686238400528084 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 44207A721679FC4800AA3DCE /* DynamicLibraries.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 44207AA5167A09BA00AA3DCE;
+			remoteInfo = TypeA;
+		};
+		44E6471C1686238400528084 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 44207A721679FC4800AA3DCE /* DynamicLibraries.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 44207AAD167A09EA00AA3DCE;
+			remoteInfo = TypeB;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -81,7 +102,10 @@
 		44207A731679FC4800AA3DCE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				44207A771679FC4800AA3DCE /* libDynamicLibraries.dylib */,
+				44E647171686238400528084 /* libInterface.dylib */,
+				44E647191686238400528084 /* libDispatcher.dylib */,
+				44E6471B1686238400528084 /* libTypeA.dylib */,
+				44E6471D1686238400528084 /* libTypeB.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,11 +163,32 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		44207A771679FC4800AA3DCE /* libDynamicLibraries.dylib */ = {
+		44E647171686238400528084 /* libInterface.dylib */ = {
 			isa = PBXReferenceProxy;
 			fileType = "compiled.mach-o.dylib";
-			path = libDynamicLibraries.dylib;
-			remoteRef = 44207A761679FC4800AA3DCE /* PBXContainerItemProxy */;
+			path = libInterface.dylib;
+			remoteRef = 44E647161686238400528084 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		44E647191686238400528084 /* libDispatcher.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libDispatcher.dylib;
+			remoteRef = 44E647181686238400528084 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		44E6471B1686238400528084 /* libTypeA.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libTypeA.dylib;
+			remoteRef = 44E6471A1686238400528084 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		44E6471D1686238400528084 /* libTypeB.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libTypeB.dylib;
+			remoteRef = 44E6471C1686238400528084 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -246,6 +291,7 @@
 				44207A3E1679FBA400AA3DCE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

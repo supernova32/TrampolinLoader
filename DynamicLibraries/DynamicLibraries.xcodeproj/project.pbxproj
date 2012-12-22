@@ -11,6 +11,10 @@
 		44207ABC167A0A7E00AA3DCE /* Dispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 44207ABB167A0A7E00AA3DCE /* Dispatcher.h */; };
 		44207ABE167A0AC700AA3DCE /* TypeA.h in Headers */ = {isa = PBXBuildFile; fileRef = 44207ABD167A0AC700AA3DCE /* TypeA.h */; };
 		44207AC0167A0ADF00AA3DCE /* TypeB.h in Headers */ = {isa = PBXBuildFile; fileRef = 44207ABF167A0ADF00AA3DCE /* TypeB.h */; };
+		44E6472A168624F700528084 /* Interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44E64729168624F700528084 /* Interface.cpp */; };
+		44E6472D168633ED00528084 /* TypeA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44E6472C168633ED00528084 /* TypeA.cpp */; };
+		44E6472F168634D700528084 /* TypeB.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44E6472E168634D700528084 /* TypeB.cpp */; };
+		44E647311686371D00528084 /* Dispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44E647301686371D00528084 /* Dispatcher.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		44207ABB167A0A7E00AA3DCE /* Dispatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dispatcher.h; sourceTree = "<group>"; };
 		44207ABD167A0AC700AA3DCE /* TypeA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeA.h; sourceTree = "<group>"; };
 		44207ABF167A0ADF00AA3DCE /* TypeB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeB.h; sourceTree = "<group>"; };
+		44E64729168624F700528084 /* Interface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Interface.cpp; sourceTree = "<group>"; };
+		44E6472C168633ED00528084 /* TypeA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TypeA.cpp; sourceTree = "<group>"; };
+		44E6472E168634D700528084 /* TypeB.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TypeB.cpp; sourceTree = "<group>"; };
+		44E647301686371D00528084 /* Dispatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dispatcher.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +67,10 @@
 		44207A601679FC4800AA3DCE = {
 			isa = PBXGroup;
 			children = (
+				44E64729168624F700528084 /* Interface.cpp */,
+				44E6472C168633ED00528084 /* TypeA.cpp */,
+				44E647301686371D00528084 /* Dispatcher.cpp */,
+				44E6472E168634D700528084 /* TypeB.cpp */,
 				44207ABF167A0ADF00AA3DCE /* TypeB.h */,
 				44207ABD167A0AC700AA3DCE /* TypeA.h */,
 				44207ABB167A0A7E00AA3DCE /* Dispatcher.h */,
@@ -218,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44E647311686371D00528084 /* Dispatcher.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44E6472D168633ED00528084 /* TypeA.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44E6472F168634D700528084 /* TypeB.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44E6472A168624F700528084 /* Interface.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +397,7 @@
 				44207AA0167A099100AA3DCE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		44207AA6167A09BA00AA3DCE /* Build configuration list for PBXNativeTarget "TypeA" */ = {
 			isa = XCConfigurationList;
@@ -389,6 +406,7 @@
 				44207AA8167A09BA00AA3DCE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		44207AAE167A09EA00AA3DCE /* Build configuration list for PBXNativeTarget "TypeB" */ = {
 			isa = XCConfigurationList;
@@ -397,6 +415,7 @@
 				44207AB0167A09EA00AA3DCE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		44207AB6167A0A0900AA3DCE /* Build configuration list for PBXNativeTarget "Interface" */ = {
 			isa = XCConfigurationList;
@@ -405,6 +424,7 @@
 				44207AB8167A0A0900AA3DCE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
