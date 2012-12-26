@@ -18,3 +18,20 @@ extern "C" {
 Interface *getInterfaceObjectCPP() {
     return new TypeA();
 }
+
+boolean TypeA::open(const char *name, const char *param){
+    
+}
+
+boolean TypeA::close(){
+    
+}
+
+size_t TypeA::read(void *buffer, int count){
+    
+}
+
+size_t TypeA::write(const void *buffer, int count){
+    
+}
+
