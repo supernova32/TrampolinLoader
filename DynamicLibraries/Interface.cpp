@@ -10,7 +10,7 @@
 #include <iostream>
 #ifdef _WIN32
 #include <windows.h>
-Interface loadLibrary(char *name){
+Interface loadLibrary(const char *name){
     HMODULE *handle = LoadLibrary(name);
     if ( handle == NULL ) {
         //TODO: find dlerror equivalent in Windows
@@ -36,7 +36,7 @@ Interface loadLibrary(char *name){
 }
 #else
 #include <dlfcn.h>
-Interface loadLibrary(char *name){
+Interface* loadLibrary(const char *name){
     void *handle = dlopen(name, RTLD_NOW);
     if ( handle == NULL ) {
         std::cerr << dlerror() << std::endl;
@@ -61,31 +61,9 @@ Interface loadLibrary(char *name){
 #endif
 #include <cstdlib>
 
-extern "C" {
-    Interface *getInterfaceObjectC() {
-        return new Interface();
-    }
-}
-
-Interface *getInterfaceObjectCPP() {
-    return new Interface();
-}
-
-boolean Interface::open(const char *name, const char *param){
-        
-};
-boolean Interface::close(){
-    
-};
-size_t Interface::read(void *buffer, size_t count){
-    
-};
-size_t Interface::write(const void *buffer, int count){
-    
-};
 
 Interface* InterfaceBuilder::getInstance(const char *name, const char *param){
-    return loadLibrary();
+    return loadLibrary(name);
 }
 
 

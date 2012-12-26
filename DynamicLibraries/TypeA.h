@@ -6,12 +6,14 @@
 //  Copyright (c) 2012 Patricio Cano. All rights reserved.
 //
 
+#include <iostream>
+#include "Interface.h"
 #ifndef DynamicLibraries_TypeA_h
 #define DynamicLibraries_TypeA_h
 
 class TypeA: public Interface{
-    boolean open(const char *name, const char *param);
-    boolean close();
+    bool open(const char *name, const char *param);
+    bool close();
     size_t read(void *buffer, size_t count);
     size_t write(const void *buffer, size_t count);
 };

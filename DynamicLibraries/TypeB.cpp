@@ -19,18 +19,27 @@ Interface *getInterfaceObjectCPP() {
     return new TypeB();
 }
 
-boolean TypeB::open(const char *name, const char *param){
+bool TypeB::open(const char *name, const char *param){
+    std::cout
+    << "Hello i am TypeB: open methode. Name: " << name
+    << " Parameter: " << param;
+    return true;    
+}
+
+bool TypeB::close(){
+    std::cout
+    << "Hello i am TypeB: close methode.";
+    return true;    
+}
+
+size_t TypeB::read(void *buffer, size_t count){
+    std::cout
+    << "Hello i am TypeB: read methode. Count: " << count;
     
 }
 
-boolean TypeB::close(){
-    
-}
-
-size_t TypeB::read(void *buffer, int count){
-    
-}
-
-size_t TypeB::write(const void *buffer, int count){
+size_t TypeB::write(const void *buffer, size_t count){
+    std::cout
+    << "Hello i am TypeB: write methode. Count: " << count;
     
 }
