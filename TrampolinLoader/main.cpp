@@ -7,12 +7,32 @@
 //
 
 #include <iostream>
+#include "../DynamicLibraries/Dispatcher.h"
+#include <dlfcn.h>
 
 int main(int argc, const char * argv[])
 {
 
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    void *handle = dlopen("libDispatcher.dylib", RTLD_NOW);
+    if ( handle == NULL ) {
+        std::cerr << dlerror() << std::endl;
+        exit(1);
+    }
+    std::cerr << "Dispatcher loaded at address: " << handle << std::endl;
+    
+    Dispatcher *(*factory)();
+    
+    *((void **)&factory) = dlsym(handle, "getDispatcherObjectC");
+    
+    if ( factory == NULL ) {
+        std::cerr << dlerror() << std::endl;
+        exit(1);
+    }
+    
+    std::cerr << "Function from Dispatcher loaded at address: " << ((void *)factory) << std::endl;
+    Dispatcher *object = (*factory)();
+    std::cerr << "Dispatcher Object loaded at address: " << ((void *)object) << std::endl;
+    object->close();
     return 0;
 }
 
