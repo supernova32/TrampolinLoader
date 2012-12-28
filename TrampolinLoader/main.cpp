@@ -33,6 +33,7 @@ int main(int argc, const char * argv[])
     Dispatcher *object = (*factory)();
     std::cerr << "Dispatcher Object loaded at address: " << ((void *)object) << std::endl;
     object->close();
+    object->open("me", "you");
     return 0;
 }
 
