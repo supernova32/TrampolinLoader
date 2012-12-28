@@ -66,7 +66,7 @@ Interface* loadLibrary(const char *name){
 
 extern "C" {
     Dispatcher *getDispatcherObjectC() {
-        return new Dispatcher("libTypeA.dylib", "0");
+        return new Dispatcher("libTypeA.dylib", "0");//<- added to test. must be removed once config is working
     }
 }
 
