@@ -11,6 +11,7 @@
 #define DynamicLibraries_Interface_h
 
 class Interface {
+public:
     virtual bool open(const char *name, const char *param) = 0;
     virtual bool close() = 0;
     virtual size_t read(void *buffer, size_t count) = 0;
@@ -18,6 +19,7 @@ class Interface {
 };
 
 class InterfaceBuilder {
+public:
     virtual Interface *getInstance(const char *name, const char *param) = 0;
 };
 
