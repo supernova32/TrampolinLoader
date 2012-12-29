@@ -87,7 +87,7 @@ Dispatcher::Dispatcher(const char *name, const char *param){
     local_name = name;
     local_param = param;
     builders.insert(builders.begin(), this);//<- added to test. must be removed once config is working
-    local_interface = this->getInterface(local_name, local_param); //<- added to test. must be removed once config is working
+    local_interface = this->getInterface(local_name, local_param);
     std::cerr << "We have a loaded dylib." << std::endl;
 }
 
