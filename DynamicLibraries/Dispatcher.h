@@ -32,8 +32,8 @@ public:
     ~Dispatcher();
     
     // given funktions
-    static void Initialize(const char *configFile);
-    static void RegisterBuilder(InterfaceBuilder *builder);
+    virtual void Initialize(const char *configFile);
+    virtual void RegisterBuilder(InterfaceBuilder *builder);
     virtual bool open(const char *name, const char *param);
     virtual bool close();
     virtual size_t read(void *buffer, size_t count);

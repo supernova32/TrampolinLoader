@@ -1,9 +1,9 @@
 //
-//  Dispatcher.cpp
-//  DynamicLibraries
+// Dispatcher.cpp
+// DynamicLibraries
 //
-//  Created by Patricio Cano on 12/22/12.
-//  Copyright (c) 2012 Patricio Cano. All rights reserved.
+// Created by Patricio Cano on 12/22/12.
+// Copyright (c) 2012 Patricio Cano. All rights reserved.
 //
 
 #include "Dispatcher.h"
@@ -66,7 +66,7 @@ Interface* loadLibrary(const char *name){
 
 extern "C" {
     Dispatcher *getDispatcherObjectC() {
-        return new Dispatcher("libTypeA.dylib", "0");//<- added to test. must be removed once config is working
+        return new Dispatcher();
     }
 }
 
@@ -85,11 +85,15 @@ Dispatcher::Dispatcher() {
 
 Dispatcher::Dispatcher(const char *name, const char *param){
     local_name = name;
-    local_param = param;
-    builders.insert(builders.begin(), this);//<- added to test. must be removed once config is working
-    local_interface = this->getInterface(local_name, local_param);
+    local_param = param;    
+    //this->RegisterBuilder(this);
+    local_interface = this->getInterface(local_name,local_param);
+    
+    
     std::cerr << "We have a loaded dylib." << std::endl;
 }
+
+
 
 /**
  * Initalize the registered builder from the config file.
@@ -98,13 +102,15 @@ Dispatcher::Dispatcher(const char *name, const char *param){
  * @param configFile
  */
 
-static void Initialize(const char *configFile) {
+void Dispatcher::Initialize(const char *configFile) {
     Config cfg = *new Config(configFile);
-    
+    //this needs checking!!
     for (int i = 0; i < ARRAY_SIZE(cfg.fileArr); i++) {
-        //this needs checking!!
-        InterfaceBuilder* obj = new Dispatcher(&cfg.fileArr[i], &cfg.fileArr[i]); //<--- Params and name from config should be here!!
-        Dispatcher::RegisterBuilder(obj);        
+        
+        //fileArr[i] = name
+        //fileArr[i+1] = param
+        InterfaceBuilder* obj = new Dispatcher(&cfg.fileArr[i], &cfg.fileArr[i+1]);
+        Dispatcher::RegisterBuilder(obj);
     }
 }
 
@@ -116,7 +122,7 @@ static void Initialize(const char *configFile) {
  */
 
 
-static void RegisterBuilder(InterfaceBuilder *builder) {
+void Dispatcher::RegisterBuilder(InterfaceBuilder *builder) {
     Dispatcher::builders.push_back(builder);
 }
 
@@ -143,25 +149,27 @@ Interface* Dispatcher::getInterface(const char *name, const char *param) {
     for (std::vector<InterfaceBuilder *>::iterator it = builders.begin(); it != builders.end(); ++it) {
         std::cerr << "We are in the loop looking for dylib." << std::endl;
         ifb = (*it)->getInstance(name, param);
-        if (ifb != nullptr){
+        
+        // if c++0x nullptr is posibel...
+        if (ifb != NULL){
             return ifb;
-            break;            
+            break;
         }
-    }    
-    if (ifb == nullptr)
+    }
+    if (ifb == NULL)
         exit(1);
-    return ifb;    
+    return ifb;
 }
 
 //this might no be necessary
 Dispatcher& Dispatcher::getDispatcherInstance() {
     if (!Dispatcher::instance)
         instance = new Dispatcher();
-     return *instance;     
+    return *instance;
     
 }
 
 //it doesn't work for some reason.
 //void destroy() {
-//    delete Dispatcher::instance;
+// delete Dispatcher::instance;
 //}

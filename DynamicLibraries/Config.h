@@ -1,9 +1,9 @@
 //
-//  Config.h
-//  DynamicLibraries
+// Config.h
+// DynamicLibraries
 //
-//  Created by Patricio Cano on 12/28/12.
-//  Copyright (c) 2012 Patricio Cano. All rights reserved.
+// Created by Patricio Cano on 12/28/12.
+// Copyright (c) 2012 Patricio Cano. All rights reserved.
 //
 
 #ifndef DynamicLibraries_Config_h
@@ -15,8 +15,9 @@ public:
     Config(const char *configFile);
     Config(const Config& orig);
     virtual ~Config();
-    char fileArr[32];
+    char fileArr[64];
     std::string *getFiles();
+    const char stringToChar(std::string string);
 private:
     
 };

@@ -32,7 +32,7 @@ int main(int argc, const char * argv[])
     std::cerr << "Function from Dispatcher loaded at address: " << ((void *)factory) << std::endl;
     Dispatcher *object = (*factory)();
     std::cerr << "Dispatcher Object loaded at address: " << ((void *)object) << std::endl;
-    object->close();
+    object->Initialize("config.txt");
     object->open("me", "you");
     return 0;
 }
