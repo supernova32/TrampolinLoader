@@ -156,7 +156,6 @@ Interface* Dispatcher::getInterface(const char *name, const char *param) {
     Interface* ifb;
     std::cerr << "We begin to load external lib." << std::endl;
     for (std::vector<InterfaceBuilder *>::iterator it = builders.begin(); it != builders.end(); it++) {
-        std::cerr << "We are in the loop looking for dylib." << std::endl;
         ifb = (*it)->getInstance(name, param);
         
         // in c++0x nullptr is possible...
