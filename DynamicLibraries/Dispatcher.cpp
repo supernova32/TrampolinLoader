@@ -44,6 +44,7 @@ Interface* loadLibrary(const char *name){
         std::cerr << dlerror() << std::endl;
         exit(1);
     }
+    std::cerr << name << std::endl;
     std::cerr << "Library loaded at address: " << handle << std::endl;
     
     Interface *(*factory)();
@@ -70,27 +71,30 @@ extern "C" {
     }
 }
 
+Dispatcher *getDispatcherObjectCPP() {
+    return new Dispatcher();
+}
+
 Interface* Dispatcher::getInstance(const char *name, const char *param){
     std::cerr << "We are loading the dylib." << std::endl;
-    return loadLibrary(name);
+    return loadLibrary(local_name);
 }
 
 
 
 Dispatcher* Dispatcher::instance = 0;
-std::vector<InterfaceBuilder *> Dispatcher::builders = *new std::vector<InterfaceBuilder *>();
+//std::vector<InterfaceBuilder *> Dispatcher::builders = *new std::vector<InterfaceBuilder *>();
 
 Dispatcher::Dispatcher() {
 }
 
-Dispatcher::Dispatcher(const char *name, const char *param){
-    local_name = name;
-    local_param = param;    
+Dispatcher::Dispatcher(std::string name, std::string param){
+    Dispatcher::local_name = strdup(name.c_str());//&(const char&)name;
+    Dispatcher::local_param = strdup(param.c_str());//&(const char&)param;
     //this->RegisterBuilder(this);
-    local_interface = this->getInterface(local_name,local_param);
+    //local_interface = this->getInterface(local_name, local_param);
     
-    
-    std::cerr << "We have a loaded dylib." << std::endl;
+    std::cerr << "We have a loaded lib in Dispatcher." << std::endl;
 }
 
 
@@ -103,14 +107,19 @@ Dispatcher::Dispatcher(const char *name, const char *param){
  */
 
 void Dispatcher::Initialize(const char *configFile) {
-    Config cfg = *new Config(configFile);
-    //this needs checking!!
-    for (int i = 0; i < ARRAY_SIZE(cfg.fileArr); i++) {
+    Config *cfg = new Config(configFile);
+    std::vector<std::string *>::iterator it = cfg->fileVector.begin();
+    for( ; it != cfg->fileVector.end(); ++it){
+        int posEqual = (*it)->find(" : ");
+        std::string subName;
+        std::string subPara;        
         
-        //fileArr[i] = name
-        //fileArr[i+1] = param
-        InterfaceBuilder* obj = new Dispatcher(&cfg.fileArr[i], &cfg.fileArr[i+1]);
-        Dispatcher::RegisterBuilder(obj);
+        subName = (*it)->substr(0, posEqual);
+        subPara = (*it)->substr(posEqual + 3, (*it)->size() - 1);
+        Dispatcher* obj = new Dispatcher(subName, subPara);
+        this->RegisterBuilder(obj);
+        obj->local_interface = this->getInterface(obj->local_name, obj->local_param);
+        
     }
 }
 
@@ -127,36 +136,40 @@ void Dispatcher::RegisterBuilder(InterfaceBuilder *builder) {
 }
 
 bool Dispatcher::open(const char *name, const char *param) {
-    return local_interface->open(name, param);
+    Interface* inf = this->getInterface(this->local_name, this->local_param);
+    return inf->open(name, param); //Dispatcher::local_interface->open(name, param);
 }
 
 bool Dispatcher::close() {
-    return local_interface->close();
+    Interface* inf = this->getInterface(this->local_name, this->local_param);
+    return inf->close();
     
 }
 
 size_t Dispatcher::read(void *buffer, size_t count) {
-    return local_interface->read(buffer, count);
+    Interface* inf = this->getInterface(this->local_name, this->local_param);
+    return inf->read(buffer, count);
 }
 
 size_t Dispatcher::write(const void *buffer, size_t count) {
-    return local_interface->write(buffer, count);
+    Interface* inf = this->getInterface(this->local_name, this->local_param);
+    return inf->write(buffer, count);
 }
 
 Interface* Dispatcher::getInterface(const char *name, const char *param) {
     Interface* ifb;
     std::cerr << "We begin to load external lib." << std::endl;
-    for (std::vector<InterfaceBuilder *>::iterator it = builders.begin(); it != builders.end(); ++it) {
+    for (std::vector<InterfaceBuilder *>::iterator it = builders.begin(); it != builders.end(); it++) {
         std::cerr << "We are in the loop looking for dylib." << std::endl;
         ifb = (*it)->getInstance(name, param);
         
-        // if c++0x nullptr is posibel...
-        if (ifb != NULL){
+        // in c++0x nullptr is possible...
+        if (ifb != nullptr){
             return ifb;
             break;
         }
     }
-    if (ifb == NULL)
+    if (ifb == nullptr)
         exit(1);
     return ifb;
 }
@@ -168,8 +181,3 @@ Dispatcher& Dispatcher::getDispatcherInstance() {
     return *instance;
     
 }
-
-//it doesn't work for some reason.
-//void destroy() {
-// delete Dispatcher::instance;
-//}

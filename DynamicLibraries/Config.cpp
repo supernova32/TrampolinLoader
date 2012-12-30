@@ -28,7 +28,7 @@ Config::Config(const char *configFile) {
         
         outputFile << "Property .//File\n";
         outputFile << "//Use this File to setup the lib\n";
-        outputFile << "//Use \"//\" to mark an kommentar.\n";
+        outputFile << "//Use \"//\" to mark a comment.\n";
         outputFile.close();
         
         
@@ -36,7 +36,7 @@ Config::Config(const char *configFile) {
         
     } else {
         
-        cout << "Loading propertys...\nContent:\n ------ \n\n";
+        cout << "Loading propertys...\nContent:\n";
         
         ifstream ifs(configFile);
         
@@ -53,30 +53,8 @@ Config::Config(const char *configFile) {
             
             // Exclude kommentar
             if ((pos > 0) && !(temp == "")) {
-                // if pos > 0 ther is a kommentar in this line
-                // del kommentar
-                sub = temp.substr(0, pos);
-                
-                cout << i << ": " << sub << ".\n";
-                
-                int posEqual = sub.find(" = ");
-                
-                string subName;
-                string subPara;
-                
-                subName = sub.substr(0, posEqual);
-                char *tmp = new char[subName.size() + 1];
-                tmp[subName.size()] = 0;
-                memcpy(tmp, subName.c_str(), subName.size());
-                fileArr[i] = *tmp;
-                
-                
-                
-                subPara = sub.substr(posEqual, sub.size() - 1);
-                char *sb = new char[subPara.size() + 1];
-                sb[subPara.size()] = 0;
-                memcpy(sb, subPara.c_str(), subPara.size());
-                fileArr[i+1] = *sb;
+                cout << i << ": " << temp << ".\n";
+                this->fileVector.push_back(&temp);
                 
                 i=i+2;
                 
@@ -85,35 +63,18 @@ Config::Config(const char *configFile) {
                     // if pos = -1 ther is no kommentar
                     cout << i << ": " << temp << ".\n";
                     
-                    int posEqual = temp.find(" = ");
+                    int posEqual = temp.find(" : ");
                     
-                    string subName;
-                    string subPara;
-                    
-                    
-                    
-                    subName = temp.substr(0, posEqual);
-                    char *tmp = new char[subName.size() + 1];
-                    tmp[subName.size()] = 0;
-                    memcpy(tmp, subName.c_str(), subName.size());
-                    fileArr[i] = *tmp;
-                    
-                    
-                    
-                    subPara = temp.substr(posEqual, temp.size() - 1);
-                    char *sb = new char[subPara.size() + 1];
-                    sb[subPara.size()] = 0;
-                    memcpy(sb, subPara.c_str(), subPara.size());
-                    fileArr[i+1] = *sb;
+                    this->fileVector.push_back(&temp);
                     
                     i=i+2;
-                } // if pos = 0 ther is only kommentar
+                }
             
         }
         
         
         
-        cout << "\n\n------\n";
+        cout << "\n";
         fclose(pFile);
         cout << "Closing file...\n";
         
@@ -122,17 +83,6 @@ Config::Config(const char *configFile) {
     
 }
 
-const char stringToChar(std::string temp) {
-    
-    char *tmp = new char[temp.size() + 1];
-    tmp[temp.size()] = 0;
-    memcpy(tmp, temp.c_str(), temp.size());
-    
-    return *tmp;
-}
-
-Config::Config(const Config& orig) {
-}
 
 Config::~Config() {
 }

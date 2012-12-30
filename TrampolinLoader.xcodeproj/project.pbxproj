@@ -60,6 +60,7 @@
 		44207A361679FBA400AA3DCE /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		44207A381679FBA400AA3DCE /* TrampolinLoader.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = TrampolinLoader.1; sourceTree = "<group>"; };
 		44207A721679FC4800AA3DCE /* DynamicLibraries.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DynamicLibraries.xcodeproj; path = DynamicLibraries/DynamicLibraries.xcodeproj; sourceTree = "<group>"; };
+		4483693F168F38D100B04612 /* config.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +96,7 @@
 			children = (
 				44207A361679FBA400AA3DCE /* main.cpp */,
 				44207A381679FBA400AA3DCE /* TrampolinLoader.1 */,
+				4483693F168F38D100B04612 /* config.txt */,
 			);
 			path = TrampolinLoader;
 			sourceTree = "<group>";

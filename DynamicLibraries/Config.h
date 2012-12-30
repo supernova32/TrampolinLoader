@@ -9,15 +9,14 @@
 #ifndef DynamicLibraries_Config_h
 #define DynamicLibraries_Config_h
 #include <string>
+#include <vector>
 
 class Config {
 public:
     Config(const char *configFile);
-    Config(const Config& orig);
     virtual ~Config();
-    char fileArr[64];
+    std::vector<std::string *> fileVector;
     std::string *getFiles();
-    const char stringToChar(std::string string);
 private:
     
 };

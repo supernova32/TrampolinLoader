@@ -32,8 +32,9 @@ int main(int argc, const char * argv[])
     std::cerr << "Function from Dispatcher loaded at address: " << ((void *)factory) << std::endl;
     Dispatcher *object = (*factory)();
     std::cerr << "Dispatcher Object loaded at address: " << ((void *)object) << std::endl;
-    object->Initialize("config.txt");
+    object->Initialize("/Users/pato/Studium/HFT/Sem\ 4/PROG3/TrampolinLoader/TrampolinLoader/config.txt");
     object->open("me", "you");
+    object->close();
     return 0;
 }
 
