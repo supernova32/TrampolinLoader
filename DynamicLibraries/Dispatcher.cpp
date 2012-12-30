@@ -83,16 +83,13 @@ Interface* Dispatcher::getInstance(const char *name, const char *param){
 
 
 Dispatcher* Dispatcher::instance = 0;
-//std::vector<InterfaceBuilder *> Dispatcher::builders = *new std::vector<InterfaceBuilder *>();
 
 Dispatcher::Dispatcher() {
 }
 
 Dispatcher::Dispatcher(std::string name, std::string param){
-    Dispatcher::local_name = strdup(name.c_str());//&(const char&)name;
-    Dispatcher::local_param = strdup(param.c_str());//&(const char&)param;
-    //this->RegisterBuilder(this);
-    //local_interface = this->getInterface(local_name, local_param);
+    Dispatcher::local_name = strdup(name.c_str());
+    Dispatcher::local_param = strdup(param.c_str());
     
     std::cerr << "We have a loaded lib in Dispatcher." << std::endl;
 }
@@ -118,7 +115,6 @@ void Dispatcher::Initialize(const char *configFile) {
         subPara = (*it)->substr(posEqual + 3, (*it)->size() - 1);
         Dispatcher* obj = new Dispatcher(subName, subPara);
         this->RegisterBuilder(obj);
-        obj->local_interface = this->getInterface(obj->local_name, obj->local_param);
         
     }
 }
@@ -137,7 +133,7 @@ void Dispatcher::RegisterBuilder(InterfaceBuilder *builder) {
 
 bool Dispatcher::open(const char *name, const char *param) {
     Interface* inf = this->getInterface(this->local_name, this->local_param);
-    return inf->open(name, param); //Dispatcher::local_interface->open(name, param);
+    return inf->open(name, param);
 }
 
 bool Dispatcher::close() {
