@@ -1,4 +1,4 @@
 TrampolinLoader
 ===============
 
-Dynamic Library Generic Loader
+Generic Dynamic Library Loader
